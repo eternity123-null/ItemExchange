@@ -1,0 +1,3 @@
+D:/学习/软件工程/ItemExchange/cmake-build-debug/CMakeFiles/ItemExchange.dir
+D:/学习/软件工程/ItemExchange/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/学习/软件工程/ItemExchange/cmake-build-debug/CMakeFiles/rebuild_cache.dir
