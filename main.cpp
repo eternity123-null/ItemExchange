@@ -1,13 +1,16 @@
+//æœ¬æ–‡ä»¶æ˜¯é¡¹ç›®ä¸»ç¨‹åºï¼Œå®ç°äº†ç‰©å“äº¤æ¢ç³»ç»Ÿ
+//ä½œè€…ï¼šEternity123-null
+//æ—¶é—´ï¼š2022/10/15
 #include <iostream>
 #include <string>
 #include <map>
 using namespace std;
-// Ãû³Æ£¬ÊıÁ¿
-//Ìí¼ÓÒ»ĞĞ×¢ÊÍ
+
+//ç‰©å“ç±»
 class Item{
 public:
-    string name;
-    int count=0;
+    string name; //åç§°
+    int count=0; //æ•°é‡
 
     Item(){}
     Item(string n,int c){
@@ -23,9 +26,10 @@ void ShowItemList(map<string,Item> &shelf);
 void SearchItemInfo(map<string,Item> &shelf);
 
 int main() {
+    //å®šä¹‰shelf mapï¼Œä½œä¸ºä¸»å­˜å‚¨ç»“æ„
     map<string,Item> shelf;
-    cout<<" »¶Ó­À´µ½ÎïÆ·½»»»ÏµÍ³!"<<endl;
-    cout<<" Ìí¼ÓÎïÆ·ÇëÊäÈë1\n È¡ÓÃÎïÆ·ÇëÊäÈë2\n ÏÔÊ¾ÎïÆ·ÁĞ±íÇëÊäÈë3\n ²éÕÒÎïÆ·µÄĞÅÏ¢ÇëÊäÈë4\n ÍË³öÏµÍ³ÇëÊäÈë0\n";
+    cout<<" æ¬¢è¿æ¥åˆ°ç‰©å“äº¤æ¢ç³»ç»Ÿ!"<<endl;
+    cout<<" æ·»åŠ ç‰©å“è¯·è¾“å…¥1\n å–ç”¨ç‰©å“è¯·è¾“å…¥2\n æ˜¾ç¤ºç‰©å“åˆ—è¡¨è¯·è¾“å…¥3\n æŸ¥æ‰¾ç‰©å“çš„ä¿¡æ¯è¯·è¾“å…¥4\n é€€å‡ºç³»ç»Ÿè¯·è¾“å…¥0\n";
     cout<<"-----------------------------------------"<<endl;
     string input;
     while (cin>>input){
@@ -45,19 +49,20 @@ int main() {
             return 0;
         }
         cout<<"------------------------------------"<<endl;
-        cout<<" Ìí¼ÓÎïÆ·ÇëÊäÈë1\n È¡ÓÃÎïÆ·ÇëÊäÈë2\n ÏÔÊ¾ÎïÆ·ÁĞ±íÇëÊäÈë3\n ²éÕÒÎïÆ·µÄĞÅÏ¢ÇëÊäÈë4\n ÍË³öÏµÍ³ÇëÊäÈë0\n";
+        cout<<" æ·»åŠ ç‰©å“è¯·è¾“å…¥1\n å–ç”¨ç‰©å“è¯·è¾“å…¥2\n æ˜¾ç¤ºç‰©å“åˆ—è¡¨è¯·è¾“å…¥3\n æŸ¥æ‰¾ç‰©å“çš„ä¿¡æ¯è¯·è¾“å…¥4\n é€€å‡ºç³»ç»Ÿè¯·è¾“å…¥0\n";
         cout<<"------------------------------------"<<endl;
     }
 
     return 0;
 }
 
+//æ·»åŠ åŠŸèƒ½
 void Add(map<string,Item> &shelf){
     string name;
     int count;
-    cout<<"ÇëÊäÈëÎïÆ·Ãû³Æ"<<endl;
+    cout<<"è¯·è¾“å…¥ç‰©å“åç§°"<<endl;
     cin>>name;
-    cout<<"ÇëÊäÈëÎïÆ·ÊıÁ¿"<<endl;
+    cout<<"è¯·è¾“å…¥ç‰©å“æ•°é‡"<<endl;
     cin>>count;
     if(shelf.count(name)==0) {
         Item item(name, count);
@@ -70,33 +75,35 @@ void Add(map<string,Item> &shelf){
     return;
 }
 
+//åˆ é™¤åŠŸèƒ½
 void Delete(map<string,Item> &shelf){
     string name;
     int count;
-    cout<<"ÇëÊäÈëÎïÆ·Ãû³Æ"<<endl;
+    cout<<"è¯·è¾“å…¥ç‰©å“åç§°"<<endl;
     cin>>name;
-    cout<<"ÇëÊäÈëÎïÆ·ÊıÁ¿"<<endl;
+    cout<<"è¯·è¾“å…¥ç‰©å“æ•°é‡"<<endl;
     cin>>count;
     if(shelf.count(name)==0) {
-        cout<<"ÄúËùĞèÒªµÄÎïÆ·²»´æÔÚ"<<endl;
+        cout<<"æ‚¨æ‰€éœ€è¦çš„ç‰©å“ä¸å­˜åœ¨"<<endl;
     }else{
         auto itr=shelf.find(name);
         if(itr->second.count>=count){
             (itr->second.count)-=count;
-            cout<<"È¡ÓÃ³É¹¦"<<endl;
+            cout<<"å–ç”¨æˆåŠŸ"<<endl;
             if(itr->second.count==count){
                 shelf.erase(itr);
             }
         }else{
-            cout<<"ÊıÁ¿²»×ã£¬È¡ÓÃÊ§°Ü"<<endl;
+            cout<<"æ•°é‡ä¸è¶³ï¼Œå–ç”¨å¤±è´¥"<<endl;
         }
     }
     return;
 }
 
+//æ˜¾ç¤ºç‰©å“åˆ—è¡¨åŠŸèƒ½
 void ShowItemList(map<string,Item> &shelf){
-    cout<<"---ÏÖÓĞÎïÆ·ÁĞ±í---"<<endl;
-    cout<<"Ãû³Æ\tÊıÁ¿"<<endl;
+    cout<<"---ç°æœ‰ç‰©å“åˆ—è¡¨---"<<endl;
+    cout<<"åç§°\tæ•°é‡"<<endl;
     auto itr=shelf.begin();
     for(;itr!=shelf.end();itr++){
         cout<<itr->first<<'\t'<<itr->second.count<<endl;
@@ -105,15 +112,16 @@ void ShowItemList(map<string,Item> &shelf){
     return;
 }
 
+//æŸ¥æ‰¾åŠŸèƒ½
 void SearchItemInfo(map<string,Item> &shelf){
     string name;
-    cout<<"ÇëÊäÈëÎïÆ·Ãû³Æ"<<endl;
+    cout<<"è¯·è¾“å…¥ç‰©å“åç§°"<<endl;
     cin>>name;
     if(shelf.count(name)==0) {
-        cout<<"ÄúËùĞèÒªµÄÎïÆ·²»´æÔÚ"<<endl;
+        cout<<"æ‚¨æ‰€éœ€è¦çš„ç‰©å“ä¸å­˜åœ¨"<<endl;
     }else{
         auto itr=shelf.find(name);
-        cout<<"Äú²éÕÒµÄÎïÆ·Ãû³ÆÎª£º"<<name<<" £¬ÊıÁ¿Îª£º"<<itr->second.count<<"¸ö"<<endl;
+        cout<<"æ‚¨æŸ¥æ‰¾çš„ç‰©å“åç§°ä¸ºï¼š"<<name<<" ï¼Œæ•°é‡ä¸ºï¼š"<<itr->second.count<<"ä¸ª"<<endl;
     }
     return;
 }
